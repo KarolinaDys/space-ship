@@ -78,6 +78,7 @@ body {
     height: var(--size-unit);
     background-image: url('../images/ship.png');
     animation: move-8-units-X var(--ships-animation-time) steps(8) infinite;
+    position: fixed;
 }
 .enemy{
     width: var(--size-unit);
@@ -95,13 +96,13 @@ body {
     width: var(--size-unit);
     height: var(--size-unit);
     background-image: url('../images/explosion.png');
-    animation: move-17-units-X var(--explosions-animation-time) steps(17) infinite;
+    animation: move-17-units-X var(--explosions-animation-time) steps(17) forwards;
 }
 .explosion--big{
     width: calc(var(--size-unit) *2);
     height: calc(var(--size-unit) *2);
     background-image: url('../images/explosion-big.png');
-    animation: move-34-units-X var(--explosions-animation-time) steps(17) infinite;
+    animation: move-34-units-X var(--explosions-animation-time) steps(17) forwards;
 }
 .missile{
     background-image: url('../images/missile.png');
