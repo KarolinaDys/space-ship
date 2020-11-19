@@ -1,8 +1,8 @@
-import { Missile } from "./Missile.js";
+import { Missile } from './Missile.js';
 
 export class Spaceship {
   missiles = [];
-  #modifier = 5;
+  #modifier = 10;
   #leftArrow = false;
   #rightArrow = false;
   constructor(element, container) {
@@ -10,24 +10,21 @@ export class Spaceship {
     this.container = container;
   }
   init() {
-    this.#setPosition();
+    this.setPosition();
     this.#eventListeners();
     this.#gameLoop();
   }
-  #setPosition() {
-    this.element.style.bottom = "0px";
+  setPosition() {
+    this.element.style.bottom = '0px';
     this.element.style.left = `${
-      window.innerWidth / 2 -
-      this.element.offsetLeft -
-      this.element.offsetWidth / 2 -
-      this.#getPosition()
+      window.innerWidth / 2 - this.#getPosition()
     }px`;
   }
   #getPosition() {
     return this.element.offsetLeft + this.element.offsetWidth / 2;
   }
   #eventListeners() {
-    window.addEventListener("keydown", ({ keyCode }) => {
+    window.addEventListener('keydown', ({ keyCode }) => {
       switch (keyCode) {
         case 37:
           this.#leftArrow = true;
@@ -37,7 +34,7 @@ export class Spaceship {
           break;
       }
     });
-    window.addEventListener("keyup", ({ keyCode }) => {
+    window.addEventListener('keyup', ({ keyCode }) => {
       switch (keyCode) {
         case 32:
           this.#shot();
@@ -56,12 +53,12 @@ export class Spaceship {
     requestAnimationFrame(this.#gameLoop);
   };
   #whatKey() {
-    if (this.#leftArrow && this.#getPosition() > 0) {
+    if (this.#leftArrow && this.#getPosition() > 12) {
       this.element.style.left = `${
         parseInt(this.element.style.left, 10) - this.#modifier
       }px`;
     }
-    if (this.#rightArrow && this.#getPosition() < window.innerWidth) {
+    if (this.#rightArrow && this.#getPosition() + 12 < window.innerWidth) {
       this.element.style.left = `${
         parseInt(this.element.style.left, 10) + this.#modifier
       }px`;
@@ -77,4 +74,4 @@ export class Spaceship {
     this.missiles.push(missile);
   }
 }
-}
+
